@@ -1106,6 +1106,27 @@
   background: rgba(26, 22, 20, 0.65);
 }
 
+.contact-form__status-banner {
+  margin: 0 0 1.25rem;
+  padding: 0.875rem 1rem;
+  border-radius: 12px;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.contact-form__status-banner--error {
+  border: 1px solid rgba(200, 120, 100, 0.35);
+  background: rgba(200, 120, 100, 0.08);
+  color: rgba(200, 155, 118, 0.95);
+}
+
+.contact-form__reset {
+  margin-top: 1.25rem;
+  cursor: pointer;
+}
+
 .contact-form__success-title {
   margin: 0;
   font-family: var(--font-inter), system-ui, sans-serif;
@@ -4519,6 +4540,31 @@ html.lenis body {
   width: 100%;
 }
 
+.contact-page-form__shell--status {
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-page-form__status-banner {
+  width: 100%;
+  margin: 0 0 1.25rem;
+  padding: 0.875rem 1rem;
+  border-radius: 12px;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 300;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.contact-page-form__status-banner--error {
+  border: 1px solid rgba(200, 120, 100, 0.35);
+  background: rgba(200, 120, 100, 0.08);
+  color: rgba(200, 155, 118, 0.95);
+}
+
 .contact-page-form {
   width: 100%;
 }
@@ -4671,12 +4717,39 @@ html.lenis body {
 }
 
 .contact-page-form__success {
+  width: 100%;
   max-width: 520px;
   padding: clamp(2.5rem, 5vw, 3.25rem);
   border: 1px solid rgba(200, 155, 118, 0.22);
   border-radius: 20px;
   background: rgba(26, 22, 20, 0.65);
-  text-align: left;
+  text-align: center;
+}
+
+.contact-page-form__reset {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.5rem;
+  padding: 0.875rem 1.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background: transparent;
+  font-family: var(--font-ibm-plex-mono), "Courier New", monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #F5F1EC;
+  cursor: pointer;
+  transition:
+    border-color 0.45s ease,
+    color 0.45s ease,
+    background-color 0.45s ease;
+}
+
+.contact-page-form__reset:hover {
+  border-color: rgba(200, 155, 118, 0.42);
+  color: #C89B76;
 }
 
 .contact-page-form__success-title {
