@@ -5,6 +5,7 @@ import { SmoothScrollProvider } from "@/providers/SmoothScrollProvider";
 import { IntroProvider } from "@/providers/IntroProvider";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import SiteCursor from "@/components/ui/SiteCursor";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -73,6 +74,7 @@ export default function RootLayout({
       <body>
         <SmoothScrollProvider>
           <IntroProvider>
+            <SiteCursor />
             <Navbar />
             <main>{children}</main>
             <Footer />

@@ -1907,6 +1907,169 @@ html.lenis body {
   pointer-events: none;
 }
 
+/* ─── Premium site cursor ───────────────────────────────── */
+@media (pointer: fine) and (hover: hover) {
+  html.custom-cursor-active,
+  html.custom-cursor-active * {
+    cursor: none !important;
+  }
+}
+
+.site-cursor {
+  --cursor-ring-color: rgba(200, 155, 118, 0.72);
+  --cursor-dot-color: #F5F1EC;
+  --cursor-ring-size: 2rem;
+  --cursor-dot-size: 0.3125rem;
+  --cursor-ring-fill: transparent;
+  --cursor-label-opacity: 0;
+  --cursor-label-y: 0.75rem;
+}
+
+.site-cursor[data-theme="hero"] {
+  --cursor-ring-color: rgba(245, 241, 236, 0.42);
+  --cursor-dot-color: #C89B76;
+}
+
+.site-cursor[data-theme="research"] {
+  --cursor-ring-color: rgba(200, 155, 118, 0.88);
+  --cursor-dot-color: #F5F1EC;
+}
+
+.site-cursor[data-theme="contact"] {
+  --cursor-ring-color: rgba(184, 170, 156, 0.62);
+  --cursor-dot-color: #C89B76;
+}
+
+.site-cursor[data-theme="warm"] {
+  --cursor-ring-color: rgba(216, 178, 143, 0.82);
+  --cursor-dot-color: #0D0B09;
+  --cursor-ring-fill: rgba(200, 155, 118, 0.12);
+}
+
+.site-cursor[data-state="link"] {
+  --cursor-ring-size: 2.75rem;
+  --cursor-dot-size: 0.25rem;
+  --cursor-ring-fill: rgba(200, 155, 118, 0.08);
+  --cursor-label-opacity: 1;
+  --cursor-label-y: 1.35rem;
+}
+
+.site-cursor[data-state="button"] {
+  --cursor-ring-size: 3rem;
+  --cursor-dot-size: 0.375rem;
+  --cursor-ring-fill: rgba(200, 155, 118, 0.16);
+  --cursor-ring-color: rgba(200, 155, 118, 0.95);
+  --cursor-label-opacity: 1;
+  --cursor-label-y: 1.5rem;
+}
+
+.site-cursor[data-state="text"] {
+  --cursor-ring-size: 1.125rem;
+  --cursor-dot-size: 0.875rem;
+  --cursor-ring-fill: rgba(245, 241, 236, 0.06);
+  --cursor-ring-color: rgba(245, 241, 236, 0.55);
+}
+
+.site-cursor[data-state="hidden"] {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.site-cursor[data-pressed="true"] {
+  --cursor-ring-size: calc(var(--cursor-ring-size) * 0.88);
+  --cursor-ring-fill: rgba(200, 155, 118, 0.22);
+}
+
+.site-cursor__ring,
+.site-cursor__dot,
+.site-cursor__label {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.site-cursor__ring,
+.site-cursor__dot {
+  z-index: 99999;
+  transition:
+    width 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+    margin 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+    border-radius 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.32s ease,
+    border-color 0.32s ease,
+    opacity 0.28s ease;
+}
+
+.site-cursor__ring {
+  width: var(--cursor-ring-size);
+  height: var(--cursor-ring-size);
+  margin-top: calc(var(--cursor-ring-size) / -2);
+  margin-left: calc(var(--cursor-ring-size) / -2);
+  border: 1px solid var(--cursor-ring-color);
+  border-radius: 50%;
+  background: var(--cursor-ring-fill);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.02);
+}
+
+.site-cursor__dot {
+  width: var(--cursor-dot-size);
+  height: var(--cursor-dot-size);
+  margin-top: calc(var(--cursor-dot-size) / -2);
+  margin-left: calc(var(--cursor-dot-size) / -2);
+  border-radius: 50%;
+  background: var(--cursor-dot-color);
+  box-shadow: 0 0 12px rgba(200, 155, 118, 0.18);
+}
+
+.site-cursor[data-state="text"] .site-cursor__dot {
+  width: 0.125rem;
+  height: var(--cursor-dot-size);
+  margin-top: calc(var(--cursor-dot-size) / -2);
+  margin-left: -0.0625rem;
+  border-radius: 999px;
+  box-shadow: none;
+}
+
+.site-cursor__label {
+  z-index: 99998;
+  margin-top: var(--cursor-label-y);
+  font-family: var(--font-ibm-plex-mono), "Courier New", monospace;
+  font-size: 8px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #C89B76;
+  opacity: var(--cursor-label-opacity);
+  transition:
+    opacity 0.28s ease,
+    transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.32s ease;
+}
+
+.site-cursor[data-state="button"] .site-cursor__label::before {
+  content: "Tap";
+}
+
+.site-cursor[data-state="link"] .site-cursor__label::before {
+  content: "Open";
+}
+
+.site-cursor[data-state="default"] .site-cursor__label,
+.site-cursor[data-state="text"] .site-cursor__label,
+.site-cursor[data-state="hidden"] .site-cursor__label {
+  display: none;
+}
+
+.site-cursor {
+  position: fixed;
+  inset: 0;
+  z-index: 99997;
+  pointer-events: none;
+  transition: opacity 0.28s ease, visibility 0.28s ease;
+}
+
 /* ─── Reduced motion ────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *,
