@@ -8,6 +8,11 @@ if (typeof window !== "undefined") {
   gsap.config({
     nullTargetWarn: false,
   });
+
+  ScrollTrigger.config({
+    limitCallbacks: true,
+    ignoreMobileResize: true,
+  });
 }
 
 export { gsap, ScrollTrigger };

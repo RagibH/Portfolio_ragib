@@ -5,8 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-
-const BRAND_LOGO_SRC = "/images/rh-logo.png";
+import { brandLogoSrc } from "@/lib/site";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -63,7 +62,7 @@ export default function Navbar() {
         <Link href="/" className="site-navbar__brand" aria-label="Md. Ragib Hasan, Home">
           <span className="site-navbar__brand-logo">
             <Image
-              src={BRAND_LOGO_SRC}
+              src={brandLogoSrc}
               alt=""
               width={64}
               height={64}

@@ -4,7 +4,8 @@ import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { gsap } from "@/lib/gsap";
 import ScrollIndicator from "@/components/ui/ScrollIndicator";
-import { heroImageSrc } from "@/lib/site";
+import { heroImageFallbackSrc, heroImageSrc } from "@/lib/site";
+import { isScrollScrubEnabled } from "@/lib/motion";
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -12,7 +13,7 @@ export default function Hero() {
   const mediaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!sectionRef.current || !contentRef.current) return;
+    if (!sectionRef.current || !contentRef.current || !isScrollScrubEnabled()) return;
 
     const ctx = gsap.context(() => {
       gsap.to(contentRef.current, {
@@ -23,7 +24,7 @@ export default function Hero() {
           trigger: sectionRef.current,
           start: "top top",
           end: "42% top",
-          scrub: true,
+          scrub: 0.6,
         },
       });
 
@@ -35,7 +36,7 @@ export default function Hero() {
             trigger: sectionRef.current,
             start: "top top",
             end: "52% top",
-            scrub: true,
+            scrub: 0.6,
           },
         });
       }
@@ -47,7 +48,7 @@ export default function Hero() {
           trigger: sectionRef.current,
           start: "top top",
           end: "52% top",
-          scrub: true,
+          scrub: 0.6,
         },
       });
     }, sectionRef);
@@ -68,13 +69,16 @@ export default function Hero() {
         className="home-hero__media"
         aria-hidden="true"
       >
-        <img
-          src={heroImageSrc}
-          alt=""
-          className="home-hero__image"
-          decoding="async"
-          fetchPriority="high"
-        />
+        <picture>
+          <source srcSet={heroImageSrc} type="image/webp" />
+          <img
+            src={heroImageFallbackSrc}
+            alt=""
+            className="home-hero__image"
+            decoding="async"
+            fetchPriority="high"
+          />
+        </picture>
         <div className="home-hero__overlay" />
         <div className="home-hero__float home-hero__float--one" />
         <div className="home-hero__float home-hero__float--two" />

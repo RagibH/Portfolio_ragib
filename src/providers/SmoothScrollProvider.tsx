@@ -3,6 +3,11 @@
 import { useEffect } from "react";
 import Lenis from "lenis";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
+import { isLenisEnabled } from "@/lib/motion";
+import {
+  cancelScheduledScrollTriggerRefresh,
+  scheduleScrollTriggerRefresh,
+} from "@/lib/scrollTriggerRefresh";
 
 export function SmoothScrollProvider({
   children,
@@ -10,14 +15,25 @@ export function SmoothScrollProvider({
   children: React.ReactNode;
 }) {
   useEffect(() => {
+    const onLoad = () => scheduleScrollTriggerRefresh();
+    window.addEventListener("load", onLoad);
+    scheduleScrollTriggerRefresh();
+
+    if (!isLenisEnabled()) {
+      return () => {
+        window.removeEventListener("load", onLoad);
+        cancelScheduledScrollTriggerRefresh();
+      };
+    }
+
     const lenis = new Lenis({
-      duration: 1.4,
+      duration: 1,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
-      wheelMultiplier: 0.9,
-      touchMultiplier: 1.5,
+      wheelMultiplier: 0.95,
+      touchMultiplier: 1.2,
       infinite: false,
     });
 
@@ -48,20 +64,15 @@ export function SmoothScrollProvider({
     };
 
     gsap.ticker.add(tickerCallback);
-    gsap.ticker.lagSmoothing(0);
-
-    ScrollTrigger.refresh();
-
-    const onLoad = () => ScrollTrigger.refresh();
-    window.addEventListener("load", onLoad);
 
     return () => {
       window.removeEventListener("load", onLoad);
+      cancelScheduledScrollTriggerRefresh();
       gsap.ticker.remove(tickerCallback);
       ScrollTrigger.removeEventListener("refresh", onRefresh);
       ScrollTrigger.scrollerProxy(document.documentElement, {});
       lenis.destroy();
-      ScrollTrigger.refresh();
+      scheduleScrollTriggerRefresh();
     };
   }, []);
 

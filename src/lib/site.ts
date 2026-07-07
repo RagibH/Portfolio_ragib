@@ -18,11 +18,21 @@ export const siteContact = {
 
 /** Hero background served from `public/images/`. */
 export const heroImage = {
-  src: "/images/portfolio-hero-new.png",
-  version: 1,
+  src: "/images/portfolio-hero-new.webp",
+  fallbackSrc: "/images/portfolio-hero-new.png",
+  version: 2,
 } as const;
 
 export const heroImageSrc = `${heroImage.src}?v=${heroImage.version}`;
+export const heroImageFallbackSrc = `${heroImage.fallbackSrc}?v=${heroImage.version}`;
+
+/** Navbar + favicon logo served from `public/images/`. */
+export const brandLogo = {
+  src: "/images/rh-logo.png",
+  version: 1,
+} as const;
+
+export const brandLogoSrc = `${brandLogo.src}?v=${brandLogo.version}`;
 
 export const footerSocialLinks = [
   { label: "GitHub", href: siteContact.links.github },

@@ -5,6 +5,7 @@ import { SmoothScrollProvider } from "@/providers/SmoothScrollProvider";
 import { IntroProvider } from "@/providers/IntroProvider";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import { brandLogoSrc } from "@/lib/site";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -51,6 +52,11 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+  },
+  icons: {
+    icon: [{ url: brandLogoSrc, type: "image/png" }],
+    apple: [{ url: brandLogoSrc, type: "image/png" }],
+    shortcut: brandLogoSrc,
   },
 };
 

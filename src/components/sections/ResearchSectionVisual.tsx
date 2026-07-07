@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { gsap } from "@/lib/gsap";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
+import { isScrollScrubEnabled } from "@/lib/motion";
 
 const RESEARCH_IMAGE_SRC = "/images/research-section.png?v=3";
 
@@ -13,7 +14,7 @@ export default function ResearchSectionVisual() {
   const reducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
-    if (reducedMotion || !visualRef.current || !figureRef.current) return;
+    if (reducedMotion || !visualRef.current || !figureRef.current || !isScrollScrubEnabled()) return;
 
     const ctx = gsap.context(() => {
       gsap.to(figureRef.current, {

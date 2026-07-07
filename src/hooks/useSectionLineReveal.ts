@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, RefObject } from "react";
-import { gsap, ScrollTrigger } from "@/lib/gsap";
+import { gsap } from "@/lib/gsap";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 import { SCROLL_REVEAL_ENABLED, SCROLL_REVEAL_START } from "@/lib/motion";
+import { scheduleScrollTriggerRefresh } from "@/lib/scrollTriggerRefresh";
 
 export function useSectionLineReveal(
   breakRef: RefObject<HTMLElement | null>,
@@ -40,7 +41,7 @@ export function useSectionLineReveal(
         );
       }, breakEl);
 
-      ScrollTrigger.refresh();
+      scheduleScrollTriggerRefresh();
     };
 
     frameId = requestAnimationFrame(() => {

@@ -2,9 +2,10 @@
 
 import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
-import { gsap, ScrollTrigger } from "@/lib/gsap";
+import { gsap } from "@/lib/gsap";
 import { pageEnter } from "@/lib/animations";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
+import { scheduleScrollTriggerRefresh } from "@/lib/scrollTriggerRefresh";
 
 export default function PageTransition({
   children,
@@ -29,7 +30,7 @@ export default function PageTransition({
     }, containerRef);
 
     const refreshId = requestAnimationFrame(() => {
-      ScrollTrigger.refresh();
+      scheduleScrollTriggerRefresh();
     });
 
     return () => {

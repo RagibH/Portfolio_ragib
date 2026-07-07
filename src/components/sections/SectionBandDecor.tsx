@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "@/lib/gsap";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
+import { isScrollScrubEnabled } from "@/lib/motion";
 import type { SectionBandDecorVariant } from "@/lib/sectionBand";
 
 type SectionBandDecorProps = {
@@ -19,7 +20,7 @@ export default function SectionBandDecor({
   const reducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
-    if (reducedMotion || !decorRef.current) return;
+    if (reducedMotion || !decorRef.current || !isScrollScrubEnabled()) return;
 
     const ctx = gsap.context(() => {
       if (orbOneRef.current) {

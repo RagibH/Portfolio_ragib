@@ -2,9 +2,10 @@
 
 import { useLayoutEffect, RefObject } from "react";
 import { usePathname } from "next/navigation";
-import { gsap, ScrollTrigger } from "@/lib/gsap";
+import { gsap } from "@/lib/gsap";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 import { SCROLL_REVEAL_ENABLED, SCROLL_REVEAL_START } from "@/lib/motion";
+import { scheduleScrollTriggerRefresh } from "@/lib/scrollTriggerRefresh";
 
 export function useScrollReveal(
   scopeRef: RefObject<HTMLElement | null>,
@@ -33,16 +34,9 @@ export function useScrollReveal(
       setup(tl);
     }, scope);
 
-    const refreshScroll = () => ScrollTrigger.refresh();
-    const refreshId = requestAnimationFrame(() => {
-      requestAnimationFrame(refreshScroll);
-    });
-
-    window.addEventListener("load", refreshScroll);
+    scheduleScrollTriggerRefresh();
 
     return () => {
-      cancelAnimationFrame(refreshId);
-      window.removeEventListener("load", refreshScroll);
       ctx.revert();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
