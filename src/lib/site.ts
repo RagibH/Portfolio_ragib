@@ -26,10 +26,10 @@ export const heroImage = {
 export const heroImageSrc = `${heroImage.src}?v=${heroImage.version}`;
 export const heroImageFallbackSrc = `${heroImage.fallbackSrc}?v=${heroImage.version}`;
 
-/** Navbar + favicon logo served from `public/images/`. */
+/** Navbar logo served from `public/images/RH.png`. */
 export const brandLogo = {
-  src: "/images/rh-logo.png",
-  version: 1,
+  src: "/images/RH.png",
+  version: 3,
 } as const;
 
 export const brandLogoSrc = `${brandLogo.src}?v=${brandLogo.version}`;
