@@ -1,5 +1,7 @@
 import Link from "next/link";
+import { useState } from "react";
 import { cn } from "@/lib/utils";
+import MobileFullDetailsOverlay from "@/components/ui/MobileFullDetailsOverlay";
 
 export type ProjectCardData = {
   name: string;
@@ -17,7 +19,9 @@ type ProjectCardProps = {
 };
 
 export default function ProjectCard({ project, className }: ProjectCardProps) {
+  const [isOpen, setIsOpen] = useState(false);
   return (
+  <>
     <article
       className={cn(
         "featured-card group h-full overflow-hidden rounded-xl border border-[rgba(255,255,255,0.08)] bg-[#1A1614]",
@@ -40,9 +44,16 @@ export default function ProjectCard({ project, className }: ProjectCardProps) {
           {project.category}
         </p>
 
-        <p className="mt-5 font-sans text-[0.875rem] font-light leading-[1.75] tracking-[0.01em] text-[#B8AA9C] md:text-[0.9375rem]">
+        <div className="mt-5 mobile-full-text-summary text-[#B8AA9C] font-sans text-[0.875rem] font-light leading-[1.75] tracking-[0.01em] md:text-[0.9375rem]">
           {project.description}
-        </p>
+        </div>
+        <button
+          type="button"
+          className="read-full-text__toggle mobile-full-text-toggle"
+          onClick={() => setIsOpen(true)}
+        >
+          Read full
+        </button>
 
         <ul className="featured-pills mt-6 flex flex-wrap gap-2">
           {project.technologies.map((tech) => (
@@ -70,5 +81,31 @@ export default function ProjectCard({ project, className }: ProjectCardProps) {
         </div>
       </div>
     </article>
+      <MobileFullDetailsOverlay
+        open={isOpen}
+        onClose={() => setIsOpen(false)}
+        title={project.name}
+        subtitle={project.category}
+        status={project.status}
+        description={project.description}
+        pills={project.technologies}
+        actions={
+          project.buttonHref.startsWith("http") ? (
+            <a
+              href={project.buttonHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="featured-card__action"
+            >
+              {project.buttonText}
+            </a>
+          ) : (
+            <Link href={project.buttonHref} className="featured-card__action">
+              {project.buttonText}
+            </Link>
+          )
+        }
+      />
+    </>
   );
 }

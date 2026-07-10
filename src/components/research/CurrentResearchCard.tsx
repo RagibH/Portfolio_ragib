@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import ReadFullText from "@/components/ui/ReadFullText";
 import type { CurrentResearchData } from "./types";
 
 type CurrentResearchCardProps = {
@@ -38,7 +39,13 @@ export default function CurrentResearchCard({
         ) : null}
 
         {research.note ? (
-          <p className="current-research-card__note mt-5">{research.note}</p>
+          <ReadFullText
+            className="mt-5"
+            bodyClassName="current-research-card__note"
+            collapseLines={3}
+          >
+            {research.note}
+          </ReadFullText>
         ) : null}
       </div>
     </article>

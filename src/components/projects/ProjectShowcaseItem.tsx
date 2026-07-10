@@ -1,7 +1,8 @@
 "use client";
 
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import ProjectShowcaseMedia from "./ProjectShowcaseMedia";
+import MobileFullDetailsOverlay from "@/components/ui/MobileFullDetailsOverlay";
 import { gsap } from "@/lib/gsap";
 import { imageReveal, slideReveal } from "@/lib/animations";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
@@ -17,6 +18,7 @@ export default function ProjectShowcaseItem({
   project,
   reversed = false,
 }: ProjectShowcaseItemProps) {
+  const [isOpen, setIsOpen] = useState(false);
   const itemRef = useRef<HTMLElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -82,7 +84,15 @@ export default function ProjectShowcaseItem({
 
         <h3 className="project-showcase__title">{project.name}</h3>
 
-        <p className="project-showcase__description">{project.description}</p>
+        <p className="project-showcase__description mobile-full-text-summary">{project.description}</p>
+
+        <button
+          type="button"
+          className="read-full-text__toggle mobile-full-text-toggle"
+          onClick={() => setIsOpen(true)}
+        >
+          Read full
+        </button>
 
         <ul className="project-showcase__tech">
           {project.technologies.map((tech) => (
@@ -127,6 +137,52 @@ export default function ProjectShowcaseItem({
           </div>
         ) : null}
       </div>
+
+      <MobileFullDetailsOverlay
+        open={isOpen}
+        onClose={() => setIsOpen(false)}
+        title={project.name}
+        subtitle={project.category}
+        status={project.status}
+        description={project.description}
+        pills={project.technologies}
+        actions={
+          hasActions ? (
+            <>
+              {project.liveDemo ? (
+                <a
+                  href={project.liveDemo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-showcase__btn"
+                >
+                  Live Demo
+                </a>
+              ) : null}
+              {project.github ? (
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-showcase__btn"
+                >
+                  GitHub
+                </a>
+              ) : null}
+              {project.visitWebsite ? (
+                <a
+                  href={project.visitWebsite}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-showcase__btn"
+                >
+                  Visit Website
+                </a>
+              ) : null}
+            </>
+          ) : null
+        }
+      />
     </article>
   );
 }

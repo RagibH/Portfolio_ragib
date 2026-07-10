@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import ReadFullText from "@/components/ui/ReadFullText";
 
 export type LeadershipCardData = {
   title: string;
@@ -37,9 +38,13 @@ export default function LeadershipCard({ card, className }: LeadershipCardProps)
           </p>
         ) : null}
 
-        <p className="mt-5 font-sans text-[0.875rem] font-light leading-[1.75] tracking-[0.01em] text-[#B8AA9C] transition-colors duration-[450ms] ease-out group-hover:text-[#C4B8AA] md:mt-6 md:text-[0.9375rem]">
+        <ReadFullText
+          className="mt-5"
+          bodyClassName="font-sans text-[0.875rem] font-light leading-[1.75] tracking-[0.01em] text-[#B8AA9C] transition-colors duration-[450ms] ease-out group-hover:text-[#C4B8AA] md:mt-6 md:text-[0.9375rem]"
+          collapseLines={3}
+        >
           {card.description}
-        </p>
+        </ReadFullText>
       </div>
     </article>
   );

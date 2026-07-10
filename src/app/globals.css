@@ -620,6 +620,17 @@
 }
 
 @media (max-width: 767px) {
+  .mobile-full-text-summary {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+
+  .mobile-full-text-toggle {
+    display: inline-flex;
+  }
+
   .home-hero__title {
     font-size: clamp(2.75rem, 13.5vw, 4.5rem);
   }
@@ -5515,6 +5526,74 @@ html.lenis body {
   }
 }
 
+/* ─── Read full (mobile card text expansion) ─────────────── */
+@media (min-width: 768px) {
+  .read-full-text__toggle {
+    display: none;
+  }
+
+  .read-full-text__body {
+    display: block;
+    overflow: visible;
+    -webkit-box-orient: unset;
+    -webkit-line-clamp: unset;
+  }
+}
+
+@media (max-width: 767px) {
+  .read-full-text:not(.read-full-text--expanded) .read-full-text__body {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: var(--read-full-lines, 3);
+  }
+
+  .read-full-text.read-full-text--expanded .read-full-text__body {
+    display: block !important;
+    overflow: visible !important;
+    -webkit-box-orient: unset !important;
+    -webkit-line-clamp: unset !important;
+  }
+
+  .featured-projects-grid .featured-pills {
+    max-height: none;
+    overflow: visible;
+  }
+
+  .read-full-text__toggle {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 0.375rem;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    font-family: var(--font-ibm-plex-mono), "Courier New", monospace;
+    font-size: 6px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #C89B76;
+    cursor: pointer;
+    transition: color 0.25s ease;
+  }
+
+  .read-full-text__toggle:hover {
+    color: #E8DDD2;
+  }
+}
+
+@media (min-width: 768px) {
+  .mobile-full-text-summary {
+    display: block;
+    overflow: visible;
+    -webkit-box-orient: unset;
+    -webkit-line-clamp: unset;
+  }
+
+  .mobile-full-text-toggle {
+    display: none;
+  }
+}
+
 /* ─── Mobile 2-column card grids (desktop unchanged) ─────── */
 @media (max-width: 767px) {
   .section-band-decor {
@@ -5578,12 +5657,8 @@ html.lenis body {
     letter-spacing: 0.12em;
   }
 
-  .leadership-grid .leadership-card__inner > p:last-child {
-    display: -webkit-box;
+  .leadership-grid .read-full-text__body {
     margin-top: 0.5rem;
-    overflow: hidden;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 4;
     font-size: 0.6875rem;
     line-height: 1.45;
   }
@@ -5615,12 +5690,9 @@ html.lenis body {
     letter-spacing: 0.12em;
   }
 
-  .experience-leadership-card__description {
-    display: -webkit-box;
+  .experience-leadership-card__description.read-full-text__body,
+  .experience-leadership-card .read-full-text__body {
     margin-top: 0.375rem;
-    overflow: hidden;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 4;
     font-size: 0.6875rem;
     line-height: 1.45;
   }
@@ -5728,13 +5800,9 @@ html.lenis body {
     line-height: 1.25;
   }
 
-  .journey-node__description,
-  .journey-node__list {
-    display: -webkit-box;
+  .journey-node__description.read-full-text__body,
+  .journey-node .read-full-text__body {
     margin-top: 0.375rem;
-    overflow: hidden;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 4;
     font-size: 0.625rem;
     line-height: 1.45;
   }
@@ -5781,9 +5849,8 @@ html.lenis body {
 
   .featured-projects-grid .featured-pills {
     gap: 0.25rem;
-    max-height: 3.25rem;
     margin-top: 0.5rem;
-    overflow: hidden;
+    overflow: visible;
   }
 
   .featured-projects-grid .featured-pill {
@@ -5848,11 +5915,11 @@ html.lenis body {
   }
 
   .other-project-card__description {
-    display: -webkit-box;
+    display: block;
     margin-top: 0.5rem;
-    overflow: hidden;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 4;
+    overflow: visible;
+    -webkit-box-orient: unset;
+    -webkit-line-clamp: unset;
     font-size: 0.6875rem;
     line-height: 1.45;
   }
@@ -5902,20 +5969,20 @@ html.lenis body {
   }
 
   .current-research-card__note {
-    display: -webkit-box;
+    display: block;
     margin-top: 0.5rem;
-    overflow: hidden;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
+    overflow: visible;
+    -webkit-box-orient: unset;
+    -webkit-line-clamp: unset;
     font-size: 0.6875rem;
     line-height: 1.45;
   }
 
   .current-research-grid .featured-pills {
     gap: 0.25rem;
-    max-height: 2.75rem;
+    max-height: none;
     margin-top: 0.5rem;
-    overflow: hidden;
+    overflow: visible;
   }
 
   .current-research-grid .featured-pill {
@@ -6024,12 +6091,14 @@ html.lenis body {
   }
 
   .projects-page .editorial-section-lead {
-    display: -webkit-box;
-    overflow: hidden;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-    font-size: 0.75rem;
-    line-height: 1.5;
+    /* Show full paragraph for the projects intro (no clamp) */
+    display: block;
+    overflow: visible;
+    -webkit-box-orient: unset;
+    -webkit-line-clamp: unset;
+    font-size: 0.9375rem; /* match default editorial lead size */
+    line-height: 1.95;
+    max-width: 620px;
   }
 
   .projects-page .editorial-section-body {
