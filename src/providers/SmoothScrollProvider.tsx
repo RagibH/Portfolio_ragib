@@ -8,6 +8,7 @@ import {
   cancelScheduledScrollTriggerRefresh,
   scheduleScrollTriggerRefresh,
 } from "@/lib/scrollTriggerRefresh";
+import { registerScrollController } from "@/lib/scrollToTop";
 
 export function SmoothScrollProvider({
   children,
@@ -39,6 +40,10 @@ export function SmoothScrollProvider({
 
     lenis.on("scroll", ScrollTrigger.update);
 
+    registerScrollController((top, options) => {
+      lenis.scrollTo(top, { immediate: options?.immediate ?? false });
+    });
+
     ScrollTrigger.scrollerProxy(document.documentElement, {
       scrollTop(value) {
         if (arguments.length && typeof value === "number") {
@@ -67,6 +72,7 @@ export function SmoothScrollProvider({
 
     return () => {
       window.removeEventListener("load", onLoad);
+      registerScrollController(null);
       cancelScheduledScrollTriggerRefresh();
       gsap.ticker.remove(tickerCallback);
       ScrollTrigger.removeEventListener("refresh", onRefresh);

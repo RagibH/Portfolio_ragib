@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { brandLogoSrc } from "@/lib/site";
+import { scrollToTop } from "@/lib/scrollToTop";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -51,6 +52,14 @@ export default function Navbar() {
     };
   }, [menuOpen]);
 
+  const handleHomeClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (pathname !== "/") return;
+
+    event.preventDefault();
+    setMenuOpen(false);
+    scrollToTop();
+  };
+
   return (
     <header
       data-intro="nav"
@@ -59,7 +68,12 @@ export default function Navbar() {
       className="site-navbar fixed top-0 right-0 left-0 z-50 w-full opacity-0"
     >
       <nav className="site-container site-navbar__bar">
-        <Link href="/" className="site-navbar__brand" aria-label="Md. Ragib Hasan, Home">
+        <Link
+          href="/"
+          onClick={handleHomeClick}
+          className="site-navbar__brand"
+          aria-label="Md. Ragib Hasan, Home"
+        >
           <span className="site-navbar__brand-logo">
             <Image
               src={brandLogoSrc}
@@ -77,6 +91,7 @@ export default function Navbar() {
             <li key={link.href}>
               <Link
                 href={link.href}
+                onClick={link.href === "/" ? handleHomeClick : undefined}
                 className={cn(
                   "site-navbar__link",
                   pathname === link.href && "site-navbar__link--active"
@@ -119,7 +134,13 @@ export default function Navbar() {
             <li key={link.href}>
               <Link
                 href={link.href}
-                onClick={() => setMenuOpen(false)}
+                onClick={(event) => {
+                  if (link.href === "/") {
+                    handleHomeClick(event);
+                    return;
+                  }
+                  setMenuOpen(false);
+                }}
                 className={cn(
                   "site-navbar__drawer-link",
                   pathname === link.href && "site-navbar__drawer-link--active"
