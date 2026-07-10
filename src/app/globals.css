@@ -1161,6 +1161,12 @@
   resize: vertical;
 }
 
+.contact-turnstile {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 1.25rem;
+}
+
 .contact-form__actions {
   display: flex;
   flex-wrap: wrap;
