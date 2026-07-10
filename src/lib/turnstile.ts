@@ -2,22 +2,40 @@ type TurnstileVerifyResponse = {
   success: boolean;
 };
 
+function getEnvValue(...keys: string[]): string | undefined {
+  for (const key of keys) {
+    const value = process.env[key];
+    if (value) {
+      return value;
+    }
+  }
+
+  return undefined;
+}
+
 export function getTurnstileSiteKey(): string | undefined {
-  return (
-    process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ??
-    process.env.TURNSTILE_SITE_KEY
+  return getEnvValue(
+    "NEXT_PUBLIC_TURNSTILE_SITE_KEY",
+    "TURNSTILE_SITE_KEY",
+    "NEXT_PUBLIC_CLOUDFLARE_TURNSTILE_SITE_KEY",
+    "CLOUDFLARE_TURNSTILE_SITE_KEY"
   );
 }
 
 export function isTurnstileEnabled(): boolean {
-  return Boolean(process.env.TURNSTILE_SECRET_KEY);
+  return Boolean(
+    getEnvValue("TURNSTILE_SECRET_KEY", "CLOUDFLARE_TURNSTILE_SECRET_KEY")
+  );
 }
 
 export async function verifyTurnstileToken(
   token: string,
   ip?: string
 ): Promise<boolean> {
-  const secret = process.env.TURNSTILE_SECRET_KEY;
+  const secret = getEnvValue(
+    "TURNSTILE_SECRET_KEY",
+    "CLOUDFLARE_TURNSTILE_SECRET_KEY"
+  );
   if (!secret) return true;
 
   if (!token.trim()) return false;

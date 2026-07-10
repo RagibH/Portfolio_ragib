@@ -9,6 +9,8 @@ import Contact from "@/components/sections/Contact";
 import PageSectionBreak from "@/components/ui/PageSectionBreak";
 import { getTurnstileSiteKey } from "@/lib/turnstile";
 
+export const dynamic = "force-dynamic";
+
 export default function Home() {
   const turnstileSiteKey = getTurnstileSiteKey();
 

@@ -8,6 +8,8 @@ import ContactFinalCTA from "@/components/contact/ContactFinalCTA";
 import PageSectionBreak from "@/components/ui/PageSectionBreak";
 import { getTurnstileSiteKey } from "@/lib/turnstile";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Contact | Md. Ragib Hasan",
   description:
