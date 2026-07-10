@@ -38,6 +38,26 @@ export const featuredProjects: FeaturedProjectData[] = [
 
     github: "https://github.com/RagibH/BloBax",
 
+    media: [
+      {
+        type: "image",
+        src: "/Videos/blobax1_thumbnail.png",
+        alt: "BloBax project thumbnail",
+        width: 750,
+        height: 823,
+      },
+      {
+        type: "video",
+        src: "/Videos/blobax_intro_video.mp4",
+        poster: "/Videos/blobax1_thumbnail.png",
+      },
+      {
+        type: "video",
+        src: "/Videos/BloBax_full_project_video.mp4",
+        poster: "/Videos/blobax1_thumbnail.png",
+      },
+    ],
+
   },
 
   {
@@ -68,21 +88,18 @@ export const featuredProjects: FeaturedProjectData[] = [
 
     visitWebsite: "https://bioenclave.com",
 
-  },
+    media: [
+      {
+        type: "image",
+        src: "/Videos/bioenclave_thumbnail_new.png",
+        alt: "BioEnclave website preview",
+        width: 3301,
+        height: 3028,
+        backgroundColor: "#ffffff",
+      },
+    ],
 
-  {
-
-    name: "BizTrade Venture",
-
-    category: "Business Management Platform",
-
-    status: "Completed",
-
-    description:
-
-      "Product management and admin management web application developed for BizTrade Venture, providing structured workflows for daily business operations.",
-
-    technologies: ["Next.js", "React", "Node.js", "Tailwind CSS"],
+    mediaLink: "https://bioenclave.com",
 
   },
 
@@ -103,6 +120,47 @@ export const featuredProjects: FeaturedProjectData[] = [
     github:
 
       "https://github.com/RagibH/Baymax--Your-personal-AI-powered-medical-assistant",
+
+    media: [
+      {
+        type: "image",
+        src: "/Videos/baymax-thumbnail.png",
+        alt: "Baymax project thumbnail",
+        width: 448,
+        height: 556,
+      },
+      {
+        type: "video",
+        src: "/Videos/Baymax_video.mp4",
+        poster: "/Videos/baymax-thumbnail.png",
+      },
+    ],
+
+  },
+
+  {
+
+    name: "BizTrade Venture",
+
+    category: "Business Management Platform",
+
+    status: "Completed",
+
+    description:
+
+      "Product management and admin management web application developed for BizTrade Venture, providing structured workflows for daily business operations.",
+
+    technologies: ["Next.js", "React", "Node.js", "Tailwind CSS"],
+
+    media: [
+      {
+        type: "image",
+        src: "/Videos/BizTrade_Venture_thumbnail.png",
+        alt: "BizTrade Venture project thumbnail",
+        width: 1633,
+        height: 661,
+      },
+    ],
 
   },
 

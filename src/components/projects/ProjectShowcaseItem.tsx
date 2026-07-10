@@ -1,7 +1,7 @@
 "use client";
 
 import { useLayoutEffect, useRef } from "react";
-import ProjectScreenshotPlaceholder from "./ProjectScreenshotPlaceholder";
+import ProjectShowcaseMedia from "./ProjectShowcaseMedia";
 import { gsap } from "@/lib/gsap";
 import { imageReveal, slideReveal } from "@/lib/animations";
 import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
@@ -68,7 +68,11 @@ export default function ProjectShowcaseItem({
       className={`project-showcase${reversed ? " project-showcase--reversed" : ""}`}
     >
       <div ref={imageRef} className="project-showcase__media">
-        <ProjectScreenshotPlaceholder label={project.name} />
+        <ProjectShowcaseMedia
+          items={project.media}
+          link={project.mediaLink}
+          label={project.name}
+        />
       </div>
 
       <div ref={contentRef} className="project-showcase__content">
