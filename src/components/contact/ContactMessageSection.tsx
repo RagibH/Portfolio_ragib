@@ -12,7 +12,13 @@ import { gsap } from "@/lib/gsap";
 import { sectionSpacing } from "@/lib/spacing";
 import { messageSectionHeading } from "./data";
 
-export default function ContactMessageSection() {
+type ContactMessageSectionProps = {
+  turnstileSiteKey?: string;
+};
+
+export default function ContactMessageSection({
+  turnstileSiteKey,
+}: ContactMessageSectionProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const labelRef = useRef<HTMLParagraphElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
@@ -72,7 +78,7 @@ export default function ContactMessageSection() {
         </EditorialHeading>
 
         <div ref={formRef} className="contact-page-form-wrap editorial-section-body">
-          <ContactPageForm />
+          <ContactPageForm turnstileSiteKey={turnstileSiteKey} />
         </div>
       </div>
     </section>

@@ -18,7 +18,11 @@ const contactParagraph =
 const BAND_INDEX = 7;
 const band = sectionBand(BAND_INDEX);
 
-export default function Contact() {
+type ContactProps = {
+  turnstileSiteKey?: string;
+};
+
+export default function Contact({ turnstileSiteKey }: ContactProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const labelRef = useRef<HTMLParagraphElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
@@ -75,7 +79,7 @@ export default function Contact() {
 
         <div className="contact-grid editorial-section-body">
           <div ref={formRef} className="contact-form-col">
-            <ContactForm />
+            <ContactForm turnstileSiteKey={turnstileSiteKey} />
           </div>
 
           <div ref={asideRef} className="contact-aside">

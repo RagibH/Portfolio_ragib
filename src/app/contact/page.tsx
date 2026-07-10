@@ -6,6 +6,7 @@ import ContactAvailabilitySection from "@/components/contact/ContactAvailability
 import ContactQuoteSection from "@/components/contact/ContactQuoteSection";
 import ContactFinalCTA from "@/components/contact/ContactFinalCTA";
 import PageSectionBreak from "@/components/ui/PageSectionBreak";
+import { getTurnstileSiteKey } from "@/lib/turnstile";
 
 export const metadata: Metadata = {
   title: "Contact | Md. Ragib Hasan",
@@ -14,13 +15,15 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
+  const turnstileSiteKey = getTurnstileSiteKey();
+
   return (
     <div className="editorial-subpage contact-page">
       <ContactPageHero />
       <PageSectionBreak />
       <ContactOptionsSection />
       <PageSectionBreak />
-      <ContactMessageSection />
+      <ContactMessageSection turnstileSiteKey={turnstileSiteKey} />
       <PageSectionBreak />
       <ContactAvailabilitySection />
       <PageSectionBreak />

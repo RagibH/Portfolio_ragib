@@ -1,9 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import ContactTurnstile, {
-  isContactTurnstileEnabled,
-} from "@/components/ui/ContactTurnstile";
+import ContactTurnstile from "@/components/ui/ContactTurnstile";
 import {
   CONTACT_FIELD_LIMITS,
   validateContactForm,
@@ -18,7 +16,13 @@ const initialValues: ContactFormValues = {
   message: "",
 };
 
-export default function ContactPageForm() {
+type ContactPageFormProps = {
+  turnstileSiteKey?: string;
+};
+
+export default function ContactPageForm({
+  turnstileSiteKey,
+}: ContactPageFormProps) {
   const [values, setValues] = useState<ContactFormValues>(initialValues);
   const [errors, setErrors] = useState<ContactFormErrors>({});
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">(
@@ -31,7 +35,7 @@ export default function ContactPageForm() {
   >({});
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const [turnstileKey, setTurnstileKey] = useState(0);
-  const turnstileEnabled = isContactTurnstileEnabled();
+  const turnstileEnabled = Boolean(turnstileSiteKey);
 
   function resetForm() {
     setValues(initialValues);
@@ -296,10 +300,13 @@ export default function ContactPageForm() {
           </div>
         </div>
 
-        <ContactTurnstile
-          key={turnstileKey}
-          onTokenChange={setTurnstileToken}
-        />
+        {turnstileSiteKey ? (
+          <ContactTurnstile
+            key={turnstileKey}
+            siteKey={turnstileSiteKey}
+            onTokenChange={setTurnstileToken}
+          />
+        ) : null}
 
         <div className="contact-page-form__actions">
           <button

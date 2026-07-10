@@ -23,16 +23,14 @@ declare global {
 }
 
 type ContactTurnstileProps = {
+  siteKey: string;
   onTokenChange: (token: string | null) => void;
 };
 
-const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
-
-export function isContactTurnstileEnabled(): boolean {
-  return Boolean(siteKey);
-}
-
-export default function ContactTurnstile({ onTokenChange }: ContactTurnstileProps) {
+export default function ContactTurnstile({
+  siteKey,
+  onTokenChange,
+}: ContactTurnstileProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const widgetIdRef = useRef<string | null>(null);
   const [scriptReady, setScriptReady] = useState(false);
@@ -57,7 +55,7 @@ export default function ContactTurnstile({ onTokenChange }: ContactTurnstileProp
       "expired-callback": () => onTokenChange(null),
       "error-callback": () => onTokenChange(null),
     });
-  }, [onTokenChange, scriptReady]);
+  }, [onTokenChange, scriptReady, siteKey]);
 
   useEffect(() => {
     window.onTurnstileLoad = () => setScriptReady(true);
@@ -76,10 +74,6 @@ export default function ContactTurnstile({ onTokenChange }: ContactTurnstileProp
       }
     };
   }, [renderWidget]);
-
-  if (!siteKey) {
-    return null;
-  }
 
   return (
     <>

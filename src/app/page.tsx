@@ -7,8 +7,11 @@ import Leadership from "@/components/sections/Leadership";
 import FeaturedResearch from "@/components/sections/FeaturedResearch";
 import Contact from "@/components/sections/Contact";
 import PageSectionBreak from "@/components/ui/PageSectionBreak";
+import { getTurnstileSiteKey } from "@/lib/turnstile";
 
 export default function Home() {
+  const turnstileSiteKey = getTurnstileSiteKey();
+
   return (
     <div className="editorial-subpage home-page">
       <Hero />
@@ -24,7 +27,7 @@ export default function Home() {
       <PageSectionBreak />
       <Leadership />
       <PageSectionBreak />
-      <Contact />
+      <Contact turnstileSiteKey={turnstileSiteKey} />
     </div>
   );
 }
