@@ -24,7 +24,7 @@ const ibmPlexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: "Md. Ragib Hasan",
   description:
-    "Portfolio of Md. Ragib Hasan, an undergraduate Computer Science student and aspiring Machine Learning researcher specializing in computer vision, image processing and deep learning.",
+    "Portfolio of Md. Ragib Hasan, a Computer Science graduate, Research Assistant and aspiring PhD student specializing in machine learning, computer vision, image processing and deep learning.",
   keywords: [
     "Md. Ragib Hasan",
     "Machine Learning",
@@ -40,14 +40,14 @@ export const metadata: Metadata = {
     type: "website",
     title: "Md. Ragib Hasan",
     description:
-      "Portfolio of Md. Ragib Hasan, an undergraduate Computer Science student and aspiring Machine Learning researcher.",
+      "Portfolio of Md. Ragib Hasan, a Computer Science graduate, Research Assistant and aspiring PhD student.",
     siteName: "Md. Ragib Hasan",
   },
   twitter: {
     card: "summary_large_image",
     title: "Md. Ragib Hasan",
     description:
-      "Portfolio of Md. Ragib Hasan, an undergraduate Computer Science student and aspiring Machine Learning researcher.",
+      "Portfolio of Md. Ragib Hasan, a Computer Science graduate, Research Assistant and aspiring PhD student.",
   },
   robots: {
     index: true,

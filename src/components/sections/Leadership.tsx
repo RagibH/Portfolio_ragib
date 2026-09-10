@@ -17,20 +17,22 @@ const leadershipParagraph =
 
 const leadershipCards: LeadershipCardData[] = [
   {
+    title: "Vice President",
+    organization: "SEC CSE Research Club",
+    description:
+      "Promoting research, organizing research activities and supporting collaborative projects.",
+  },
+  {
     title: "General Secretary",
     organization: "CSE Society",
     description:
-      "Leading technical events, seminars, competitions and student initiatives.",
+      "Led technical events, seminars, competitions and student initiatives. Oct 2025 – Aug 2026.",
   },
   {
-    title: "Technical Event Organizer",
+    title: "Organizing Secretary",
+    organization: "SEC Programming Club",
     description:
-      "Organized workshops, programming contests and academic sessions for students.",
-  },
-  {
-    title: "Research Collaboration",
-    description:
-      "Worked with research teammates on machine learning and computer vision projects from idea to publication.",
+      "Organized programming contests, workshops and technical events. Oct 2025 – Aug 2026.",
   },
 ];
 

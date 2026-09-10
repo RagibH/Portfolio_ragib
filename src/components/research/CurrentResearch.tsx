@@ -54,11 +54,11 @@ export default function CurrentResearch() {
       <SectionBandDecor variant={band.decorVariant} />
       <div className="editorial-page-container relative z-[1]">
         <SectionLabel ref={labelRef} index="04" className="editorial-section-label">
-          Ongoing
+          Thesis
         </SectionLabel>
 
         <EditorialHeading ref={headingRef} className="editorial-section-heading">
-          Current research.
+          Thesis and ongoing research.
         </EditorialHeading>
 
         <div ref={cardsRef} className="current-research-grid editorial-section-body">

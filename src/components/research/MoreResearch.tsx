@@ -54,11 +54,11 @@ export default function MoreResearch() {
       <SectionBandDecor variant={band.decorVariant} />
       <div className="editorial-page-container relative z-[1]">
         <SectionLabel ref={labelRef} index="03" className="editorial-section-label">
-          Archive
+          Review
         </SectionLabel>
 
         <EditorialHeading ref={headingRef} className="editorial-section-heading">
-          More research.
+          Under review and submissions.
         </EditorialHeading>
 
         <div ref={cardsRef} className="more-research-grid editorial-section-body">

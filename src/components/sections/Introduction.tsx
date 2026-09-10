@@ -10,12 +10,12 @@ import { fadeFromLeft, fadeFromRight, slideReveal, staggerFromSides } from "@/li
 import { sectionSpacing } from "@/lib/spacing";
 
 const introParagraph =
-  "I am Md. Ragib Hasan, an undergraduate Computer Science student with a growing research interest in Machine Learning, Computer Vision, Image Processing and Intelligent Healthcare Systems. My long-term goal is to pursue a PhD and contribute to research that bridges academic innovation with practical real-world applications.";
+  "I am Md. Ragib Hasan, a graduate in Computer Science and Engineering with a growing research interest in Machine Learning, Computer Vision, Image Processing and Intelligent Healthcare Systems. I am currently a Research Assistant and Adjunct Lecturer in the Department of CSE at Sylhet Engineering College, working under Md. Abu Naser Mojumder. My goal is to pursue a PhD and contribute to research that bridges academic innovation with practical real-world applications.";
 
 const infoRows = [
   {
     label: "Currently",
-    value: "Final Year Undergraduate Student",
+    value: "Research Assistant & Adjunct Lecturer",
   },
   {
     label: "Institution",

@@ -109,11 +109,11 @@ export default function Footer() {
 
             <p className="site-footer__intro">
 
-              Computer Science Undergraduate
+              Computer Science Graduate
 
               <br />
 
-              Aspiring Machine Learning Researcher
+              Aspiring PhD Student
 
             </p>
 

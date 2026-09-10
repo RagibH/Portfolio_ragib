@@ -7,7 +7,7 @@ const educationIconMap: Record<string, IconVariant> = {
   Degree: "degree",
   Department: "department",
   Institution: "institution",
-  "Current CGPA": "cgpa",
+  "Final CGPA": "cgpa",
   Status: "status",
 };
 

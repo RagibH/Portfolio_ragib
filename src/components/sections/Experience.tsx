@@ -88,11 +88,11 @@ const experienceEntries: ExperienceEntry[] = [
 
     year: "2026",
 
-    title: "Final Year, Thesis and Journal Research",
+    title: "Graduation, Academic Roles and Research",
 
     description:
 
-      "Delivered BioEnclave company website; leading thesis work on vehicle and number plate detection; advancing journal submissions and ongoing research.",
+      "Graduated with BSc in CSE; joined as Research Assistant and Adjunct Lecturer; completed thesis on vehicle detection and Bangla license plate recognition; advancing journal and ICCIT 2026 submissions.",
 
   },
 

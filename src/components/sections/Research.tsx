@@ -30,6 +30,8 @@ const researchCards = [
       "Image Classification",
       "Medical Imaging",
       "OCR",
+      "Vision Transformer",
+      "Ultralytics/YOLO",
     ],
   },
   {
@@ -39,15 +41,17 @@ const researchCards = [
       "CNN",
       "Transfer Learning",
       "Model Evaluation",
+      "Real-World Implementation",
     ],
   },
   {
     title: "Research Interests",
     items: [
-      "Healthcare AI",
-      "Document Intelligence",
-      "Intelligent Transportation",
-      "Natural Language Processing",
+      "Computer vision and deep learning for real-world visual understanding",
+      "Object-centric recognition, OCR, and document intelligence",
+      "Multimodal learning",
+      "Efficient and robust systems for challenging, real-world environments",
+      "Applications in healthcare and low-resource language and script recognition",
     ],
   },
 ];

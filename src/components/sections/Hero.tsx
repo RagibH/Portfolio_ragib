@@ -97,6 +97,7 @@ export default function Hero() {
           <p
             data-intro="subtitle-primary"
             className="home-hero__role home-hero__role--left opacity-0"
+            aria-hidden="true"
           >
             <span className="home-hero__role-line">Aspiring Machine Learning</span>
             <span className="home-hero__role-line">Researcher</span>
@@ -105,8 +106,8 @@ export default function Hero() {
             data-intro="subtitle-secondary"
             className="home-hero__role home-hero__role--right opacity-0"
           >
-            <span className="home-hero__role-line">Undergraduate Computer</span>
-            <span className="home-hero__role-line">Science Student</span>
+            <span className="home-hero__role-line">Aspiring PhD</span>
+            <span className="home-hero__role-line">Student</span>
           </p>
         </div>
 
